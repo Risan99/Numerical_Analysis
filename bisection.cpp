@@ -1,36 +1,40 @@
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
-#define EP 0.001
-
-
-double f(double x) {
-   return x*x*x - x*x + 2;
+double f(double x)
+{
+    return x * x * x + x * x + 2 * x - 4;
 }
-
-void bisection(double a, double b) {
-   if (f(a) * f(b) >= 0) {
-      cout << "You have not assumed right a and b\n";
-      return;
-   }
-  double c ;
-   while ((b-a) >= EP) {
-   
-      c = (a+b)/2;
-     
-      if (f(c) == 0.0)
-         break;
-      
-      else if (f(c)*f(a) < 0)
-         b = c;
-      else
-         a = c;
-   }
-   cout << "The value of root is : " << c;
-}
-
-int main() {
-   double a, b;
-   cin>>a>>b;
-   bisection(a, b);
-   return 0;
+int main()
+{
+    double a, b, e;
+    cout << "Enter doubleitial guess: ";
+    cin >> a >> b;
+    cout << "Enter precision: ";
+    cin >> e;
+    if (f(a) * f(b) > 0)
+        cout << "Root maybe not in the range.\n";
+    else
+    {
+        double mid;
+        double error = 100;
+        int i = 1;
+        while (error > e)
+        {
+            mid = (a + b) / 2;
+            cout << "Root after " << i++ << "th iteration :" << mid << '\n';
+            if (f(mid) == 0.0)
+                break;
+            if (f(a) * f(mid) < 0)
+            {
+                b = mid;
+            }
+            else
+            {
+                a = mid;
+            }
+            error = abs(a - b) / mid;
+        }
+        cout << "Final root: " << mid << '\n';
+    }
+    return 0;
 }
