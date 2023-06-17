@@ -10,7 +10,7 @@ int main()
     double a, b, e;
     cout << "Enter doubleitial guess: ";
     cin >> a >> b;   //Initial Guess
-    cout << "Enter precision: ";
+    cout << "Enter Error tolarence: ";
     cin >> e;       // Tolarble error  
     if (f(a) * f(b) > 0)  //Checking weather the root is in the bound
         cout << "Root maybe not in the range.\n";
@@ -20,7 +20,7 @@ int main()
         double error = 100;
         int i = 1;
         while (error > e)  // As long as error greater than tolarable error
-        {
+         {                  // if precision is given then while((b-a)>=e)
             mid = (a + b) / 2; 
             cout << "Root after " << i++ << "th iteration :" << mid << '\n';
             if (f(mid) == 0.0)
