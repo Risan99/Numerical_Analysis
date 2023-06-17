@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-
+//
 double f(double x)
 {
   return x * x * x + 2 * x * x - x + 1;
